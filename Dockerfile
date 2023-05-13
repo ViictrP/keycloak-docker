@@ -22,10 +22,10 @@ ENV KEYCLOAK_ADMIN=$KEYCLOAK_ADMIN
 ENV KEYCLOAK_ADMIN_PASSWORD=$KEYCLOAK_ADMIN_PASSWORD
 ENV KC_DB_USERNAME=$KC_DB_USERNAME
 ENV KC_DB_PASSWORD=$KC_DB_PASSWORD
-ENV KC_DB_URL=$KC_DB_URL_HOST
+ENV KC_DB_URL_HOST=$KC_DB_URL_HOST
 ENV KC_DB_URL_PORT=$KC_DB_URL_PORT
 ENV KC_DB_SCHEMA=$KC_DB_SCHEMA
 ENV KC_HOSTNAME=$HOSTNAME
 
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start --https-certificate-file=/opt/keycloak-17.0.0/tls/localhost.pem --https-certificate-key-file=/opt/keycloak-17.0.0/tls/localhost-key.pem --https-protocols=TLSv1.3,TLSv1.2 --db-url-host=127.0.0.1 --hostname=keycloak.local:$PORT --hostname-strict-backchannel=true"]
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start --https-certificate-file=/opt/keycloak-17.0.0/tls/localhost.pem --https-certificate-key-file=/opt/keycloak-17.0.0/tls/localhost-key.pem --https-protocols=TLSv1.3,TLSv1.2 --hostname=keycloak.local:$PORT --hostname-strict-backchannel=true"]
 EXPOSE $PORT
