@@ -28,4 +28,3 @@ ENV KC_DB_SCHEMA=$KC_DB_SCHEMA
 ENV KC_HOSTNAME=$HOSTNAME
 
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev"]
-EXPOSE 8080
