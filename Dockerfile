@@ -26,4 +26,5 @@ ENV KC_DB_URL_HOST=$KC_DB_URL_HOST
 ENV KC_DB_URL_PORT=$KC_DB_URL_PORT
 ENV KC_DB_SCHEMA=$KC_DB_SCHEMA
 
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start --optimized"]
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start --optimized --hostname-port=$PORT"]
+EXPOSE $PORT
