@@ -28,5 +28,5 @@ ENV KC_DB_SCHEMA=$KC_DB_SCHEMA
 ENV KC_HOSTNAME=keycloak-docker-production.up.railway.app
 ENV KCT_HOSTNAME_PORT=$PORT
 
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start"]
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start --hostname-port=$PORT"]
 EXPOSE $PORT
