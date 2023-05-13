@@ -25,7 +25,7 @@ ENV KC_DB_PASSWORD=$KC_DB_PASSWORD
 ENV KC_DB_URL_HOST=$KC_DB_URL_HOST
 ENV KC_DB_URL_PORT=$KC_DB_URL_PORT
 ENV KC_DB_SCHEMA=$KC_DB_SCHEMA
-ENV KC_HOSTNAME=$HOSTNAME
+ENV KC_HOSTNAME=keycloak-docker-production.up.railway.app
 
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start --https-certificate-file=/opt/keycloak/tls/localhost.pem --https-certificate-key-file=/opt/keycloak/tls/localhost-key.pem --https-protocols=TLSv1.3,TLSv1.2 --hostname=keycloak.local:8443 --hostname-strict-backchannel=true"]
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start"]
 EXPOSE 8443
