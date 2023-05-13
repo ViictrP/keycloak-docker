@@ -10,7 +10,7 @@ ENV KC_DB=postgres
 WORKDIR /opt/keycloak
 
 # for demonstration purposes only, please make sure to use proper certificates in production instead
-RUN keytool -genkeypair -storepass password -storetype PKCS12 -keyalg RSA -keysize 2048 -dname "CN=server" -alias server -ext "SAN:c=DNS:localhost,IP:0.0.0.0" -keystore conf/server.keystore
+RUN keytool -genkeypair -storepass password -storetype PKCS12 -keyalg RSA -keysize 2048 -dname "CN=server" -alias server -ext "SAN:c=DNS:localhost,IP:127.0.0.1" -keystore conf/server.keystore
 RUN /opt/keycloak/bin/kc.sh build
 
 FROM quay.io/keycloak/keycloak:18.0.1
@@ -27,5 +27,5 @@ ENV KC_DB_URL_PORT=$KC_DB_URL_PORT
 ENV KC_DB_SCHEMA=$KC_DB_SCHEMA
 ENV KC_HOSTNAME=$HOSTNAME
 
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start --hostname-strict-https=false --hostname=keycloak.local:$PORT --hostname-strict-backchannel=true"]
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start --https-certificate-file=/opt/keycloak-17.0.0/tls/localhost.pem --https-certificate-key-file=/opt/keycloak-17.0.0/tls/localhost-key.pem --https-protocols=TLSv1.3,TLSv1.2 --hostname=keycloak.local:$PORT --hostname-strict-backchannel=true"]
 EXPOSE $PORT
