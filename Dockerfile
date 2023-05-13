@@ -27,5 +27,5 @@ ENV KC_DB_URL_PORT=$KC_DB_URL_PORT
 ENV KC_DB_SCHEMA=$KC_DB_SCHEMA
 ENV KC_HOSTNAME=$HOSTNAME
 
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start --hostname=localhost --hostname-port=$PORT"]
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start --https-certificate-file=/opt/keycloak-17.0.0/tls/localhost.pem --https-certificate-key-file=/opt/keycloak-17.0.0/tls/localhost-key.pem --https-protocols=TLSv1.3,TLSv1.2 --db-url-host=127.0.0.1 --hostname=keycloak.local:$PORT --hostname-strict-backchannel=true"]
 EXPOSE $PORT
